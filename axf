@@ -4014,7 +4014,7 @@ pause_function
 
 ## Internet Apps
 	package_install "chromium flashplugin"
-	pacakge_install "filezilla"
+	package_install "filezilla"
 #	aur_package_install "chromium-pepper-flash chromium-libpdf"
 #	aur_package_install "btsync"
 #	aur_package_install "dropbox thunar-dropbox"
@@ -4040,12 +4040,12 @@ pause_function
 #	sudo -u ${USER_NAME} gconftool-2 --type string --set /system/gstreamer/0.10/audio/profiles/mp3/pipeline "audio/x-raw-int,rate=44100,channels=2 ! lame name=enc preset=1001 ! id3v2mux"
 
 ## Video Apps
-#	package_install "vlc"
-#	package_install "libbluray libquicktime libdvdread libdvdnav libdvdcss cdrdao"
-#	aur_package_install "libaacs"
-#         sudo -u ${USER_NAME} mkdir -p /home/${USER_NAME}/.config/aacs/ &&
-#            cd /home/${USER_NAME}/.config/aacs/ &&
-#            wget http://vlc-bluray.whoknowsmy.name/files/KEYDB.cfg
+	package_install "vlc"
+	package_install "libbluray libquicktime libdvdread libdvdnav libdvdcss cdrdao"
+	aur_package_install "libaacs"
+         sudo -u ${USER_NAME} mkdir -p /home/${USER_NAME}/.config/aacs/ &&
+            cd /home/${USER_NAME}/.config/aacs/ &&
+            wget http://vlc-bluray.whoknowsmy.name/files/KEYDB.cfg
 pause_function
 
 ## Fonts
