@@ -4005,12 +4005,12 @@ pause_function
 #	package_install "evince"
 
 ## Graphic Apps
-#	package_install "gimp"
+	package_install "gimp"
 #	aur_package_install "gimphelp-scriptfu gimp-paint-studio gimpfx-foundry"
-#	package_install "inkscape python2-numpy python-lxml"
+	package_install "inkscape python2-numpy python-lxml"
 #	aur_package_install "sozi"
-#	package_install "scribus"
-#	package_install "shotwell"
+	package_install "scribus"
+	package_install "shotwell"
 
 ## Internet Apps
 	package_install "chromium flashplugin"
@@ -4037,7 +4037,7 @@ pause_function
             # transparent to most people on most music and is already quite high in quality.
             # The resulting bitrate should be in the 170-210kbps range, according to music
             # complexity.
-#	sudo -u ${USER_NAME} gconftool-2 --type string --set /system/gstreamer/0.10/audio/profiles/mp3/pipeline "audio/x-raw-int,rate=44100,channels=2 ! lame name=enc preset=1001 ! id3v2mux"
+	sudo -u ${USER_NAME} gconftool-2 --type string --set /system/gstreamer/0.10/audio/profiles/mp3/pipeline "audio/x-raw-int,rate=44100,channels=2 ! lame name=enc preset=1001 ! id3v2mux"
 
 ## Video Apps
 	package_install "vlc"
