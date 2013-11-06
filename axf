@@ -3970,7 +3970,7 @@ pause_function
 
 ## Icons
 #	aur_package_install "awoken-icons"
-#	package_install "faenza-icon-theme faience-icon-theme"
+	package_install "faenza-icon-theme faience-icon-theme"
 #	aur_package_install "elementary-xfce-icons"
 #	aur_package_install "faenza-cupertino-icon-theme"
 #	aur_package_install "inx-icon-theme"
@@ -3981,12 +3981,12 @@ pause_function
 
 ## Themes
 #	aur_package_install "xfce-theme-greybird-git"
-#	aur_package_install "gtk-theme-numix-git"
+	aur_package_install "gtk-theme-numix-git"
 #	aur_package_install "gtk-theme-orion-git"
 pause_function
 
 ## Cursors
-#	package_install "xcursor-vanilla-dmz"
+	package_install "xcursor-vanilla-dmz"
 pause_function
 
 ## Accessories
