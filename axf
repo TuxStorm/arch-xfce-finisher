@@ -3945,7 +3945,7 @@ install_xorg
 
 # font_config
 
-# install_video_cards
+	install_video_cards
 
 #XFCE {{{
 	print_title "XFCE - https://wiki.archlinux.org/index.php/Xfce"
@@ -3990,7 +3990,7 @@ pause_function
 pause_function
 
 ## Accessories
-#	package_install "cairo-dock cairo-dock-plugins mlocate catfish gnome-calculator"
+#	package_install "cairo-dock cairo-dock-plugins catfish gnome-calculator"
 
 ## Development Apps
 #	package_install "bluefish"
