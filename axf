@@ -4013,20 +4013,20 @@ pause_function
 #	package_install "shotwell"
 
 ## Internet Apps
-#	package_install "chromium flashplugin"
-#	pacakge_install "filezilla"
+	package_install "chromium flashplugin"
+	pacakge_install "filezilla"
 #	aur_package_install "chromium-pepper-flash chromium-libpdf"
 #	aur_package_install "btsync"
 #	aur_package_install "dropbox thunar-dropbox"
-#	package_install "transmission-gtk"
-#	if [[ -f /home/${USER_NAME}/.config/transmission/settings.json ]]; then
-#	replace_line '"blocklist-enabled": false' '"blocklist-enabled": true' /home/${USER_NAME}/.config/transmission/settings.json
-#	replace_line "www\.example\.com\/blocklist" "list\.iblocklist\.com\/\?list=bt_level1&fileformat=p2p&archiveformat=gz" /home/${USER_NAME}/.config/transmission/settings.json
-#	fi
-#	package_install "liferea"
-#	package_install "pidgin"
-#	package_install "skype"
-#	package_install "irssi"
+	package_install "transmission-gtk"
+	if [[ -f /home/${USER_NAME}/.config/transmission/settings.json ]]; then
+	replace_line '"blocklist-enabled": false' '"blocklist-enabled": true' /home/${USER_NAME}/.config/transmission/settings.json
+	replace_line "www\.example\.com\/blocklist" "list\.iblocklist\.com\/\?list=bt_level1&fileformat=p2p&archiveformat=gz" /home/${USER_NAME}/.config/transmission/settings.json
+	fi
+	package_install "liferea"
+	package_install "pidgin"
+	package_install "skype"
+	package_install "irssi"
 
 ## Audio Apps
 #	package_install "rhythmbox grilo grilo-plugins libgpod libdmapsharing gnome-python python-mako pywebkitgtk"
