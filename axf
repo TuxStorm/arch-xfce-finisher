@@ -3937,13 +3937,13 @@ choose_aurhelper
 add_custom_repositories
 pause_function
 
-install_basic_setup
+	install_basic_setup
 
-# install_ssh
+	install_ssh
 
-install_xorg
+	install_xorg
 
-# font_config
+#	font_config
 
 	install_video_cards
 
