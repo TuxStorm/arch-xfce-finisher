@@ -626,9 +626,9 @@ install_xorg(){
   package_install "mesa"
   package_install "gamin"
 pause_function
-  KEYMAP=$(localectl status | grep Keymap | awk '{print $3}')
+#  KEYMAP=$(localectl status | grep Keymap | awk '{print $3}')
 pause_function
-  localectl set-keymap ${KEYMAP}
+#  localectl set-keymap ${KEYMAP}
 pause_function
 }
 #}}}
@@ -3943,7 +3943,7 @@ pause_function
 
 	install_xorg
 
-#	font_config
+	font_config
 
 	install_video_cards
 
@@ -3990,10 +3990,10 @@ pause_function
 pause_function
 
 ## Accessories
-#	package_install "cairo-dock cairo-dock-plugins catfish gnome-calculator"
+	package_install "cairo-dock cairo-dock-plugins catfish gnome-calculator"
 
 ## Development Apps
-#	package_install "bluefish"
+	package_install "bluefish"
 pause_function
 
 ## Office Apps
@@ -4006,9 +4006,9 @@ pause_function
 
 ## Graphic Apps
 	package_install "gimp"
-#	aur_package_install "gimphelp-scriptfu gimp-paint-studio gimpfx-foundry"
+	aur_package_install "gimphelp-scriptfu gimp-paint-studio gimpfx-foundry"
 	package_install "inkscape python2-numpy python-lxml"
-#	aur_package_install "sozi"
+	aur_package_install "sozi"
 	package_install "scribus"
 	package_install "shotwell"
 
@@ -4016,8 +4016,8 @@ pause_function
 	package_install "chromium flashplugin"
 	package_install "filezilla"
 #	aur_package_install "chromium-pepper-flash chromium-libpdf"
-#	aur_package_install "btsync"
-#	aur_package_install "dropbox thunar-dropbox"
+	aur_package_install "btsync"
+	aur_package_install "dropbox thunar-dropbox"
 	package_install "transmission-gtk"
 	if [[ -f /home/${USER_NAME}/.config/transmission/settings.json ]]; then
 	replace_line '"blocklist-enabled": false' '"blocklist-enabled": true' /home/${USER_NAME}/.config/transmission/settings.json
@@ -4037,7 +4037,9 @@ pause_function
             # transparent to most people on most music and is already quite high in quality.
             # The resulting bitrate should be in the 170-210kbps range, according to music
             # complexity.
+pause_function
 	sudo -u ${USER_NAME} gconftool-2 --type string --set /system/gstreamer/0.10/audio/profiles/mp3/pipeline "audio/x-raw-int,rate=44100,channels=2 ! lame name=enc preset=1001 ! id3v2mux"
+pause_function
 
 ## Video Apps
 	package_install "vlc"
@@ -4050,13 +4052,13 @@ pause_function
 
 ## Fonts
 	package_install "ttf-dejavu ttf-dejavu ttf-liberation"
-#	aur_package_install "ttf-funfonts"
-#	package_remove ttf-droid
-#	package_remove ttf-roboto
-#	package_remove cantarell-fonts
-#	package_remove ttf-ubuntu-font-family
-#	aur_package_install "ttf-google-fonts-git"
-#	aur_package_install "ttf-ms-fonts"
+	aur_package_install "ttf-funfonts"
+	package_remove ttf-droid
+	package_remove ttf-roboto
+	package_remove cantarell-fonts
+	package_remove ttf-ubuntu-font-family
+	aur_package_install "ttf-google-fonts-git"
+	aur_package_install "ttf-ms-fonts"
 pause_function
 
 
