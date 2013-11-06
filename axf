@@ -3967,20 +3967,20 @@ pause_function
 pause_function
 
 ## Icons
-	aur_package_install "awoken-icons"
+#	aur_package_install "awoken-icons"
 	package_install "faenza-icon-theme faience-icon-theme"
-	aur_package_install "elementary-xfce-icons"
-	aur_package_install "faenza-cupertino-icon-theme"
-	aur_package_install "inx-icon-theme"
-	aur_package_install "matrilineare-icon-theme"
-	aur_package_install "moka-icon-theme-git"
-	aur_package_install "nitrux-icon-theme"
+#	aur_package_install "elementary-xfce-icons"
+#	aur_package_install "faenza-cupertino-icon-theme"
+#	aur_package_install "inx-icon-theme"
+#	aur_package_install "matrilineare-icon-theme"
+#	aur_package_install "moka-icon-theme-git"
+#	aur_package_install "nitrux-icon-theme"
 pause_function
 
 ## Themes
 	aur_package_install "xfce-theme-greybird-git"
 	aur_package_install "gtk-theme-numix-git"
-	aur_package_install "gtk-theme-orion-git"
+#	aur_package_install "gtk-theme-orion-git"
 pause_function
 
 ## Cursors
@@ -3996,24 +3996,24 @@ pause_function
 
 ## Office Apps
 	print_title "LIBREOFFICE - https://wiki.archlinux.org/index.php/LibreOffice"
-	package_install "libreoffice-$LOCALE_LO libreoffice-common libreoffice-base libreoffice-calc libreoffice-draw libreoffice-impress libreoffice-math libreoffice-writer"
-	aur_package_install "hunspell-$LOCALE_HS"
-	aur_package_install "aspell-$LOCALE_AS"
-	package_install "libreoffice-gnome"
+#	package_install "libreoffice-$LOCALE_LO libreoffice-common libreoffice-base libreoffice-calc libreoffice-draw libreoffice-impress libreoffice-math libreoffice-writer"
+#	aur_package_install "hunspell-$LOCALE_HS"
+#	aur_package_install "aspell-$LOCALE_AS"
+#	package_install "libreoffice-gnome"
 	package_install "evince"
 
 ## Graphic Apps
 	package_install "gimp"
-	aur_package_install "gimphelp-scriptfu gimp-paint-studio gimpfx-foundry"
+#	aur_package_install "gimphelp-scriptfu gimp-paint-studio gimpfx-foundry"
 	package_install "inkscape python2-numpy python-lxml"
-	aur_package_install "sozi"
+#	aur_package_install "sozi"
 	package_install "scribus"
 	package_install "shotwell"
 
 ## Internet Apps
 	package_install "chromium flashplugin"
 	pacakge_install "filezilla"
-##	aur_package_install "chromium-pepper-flash chromium-libpdf"
+#	aur_package_install "chromium-pepper-flash chromium-libpdf"
 	aur_package_install "btsync"
 	aur_package_install "dropbox thunar-dropbox"
 	package_install "transmission-gtk"
@@ -4037,7 +4037,7 @@ pause_function
             # transparent to most people on most music and is already quite high in quality.
             # The resulting bitrate should be in the 170-210kbps range, according to music
             # complexity.
-            sudo -u ${USER_NAME} gconftool-2 --type string --set /system/gstreamer/0.10/audio/profiles/mp3/pipeline "audio/x-raw-int,rate=44100,channels=2 ! lame name=enc preset=1001 ! id3v2mux"
+#	sudo -u ${USER_NAME} gconftool-2 --type string --set /system/gstreamer/0.10/audio/profiles/mp3/pipeline "audio/x-raw-int,rate=44100,channels=2 ! lame name=enc preset=1001 ! id3v2mux"
           fi
 
 ## Video Apps
@@ -4051,13 +4051,13 @@ pause_function
 
 ## Fonts
 	package_install "ttf-dejavu ttf-dejavu ttf-liberation"
-	aur_package_install "ttf-funfonts"
-          package_remove ttf-droid
-          package_remove ttf-roboto
-          package_remove cantarell-fonts
-          package_remove ttf-ubuntu-font-family
-          aur_package_install "ttf-google-fonts-git"
-	aur_package_install "ttf-ms-fonts"
+#	aur_package_install "ttf-funfonts"
+	package_remove ttf-droid
+	package_remove ttf-roboto
+	package_remove cantarell-fonts
+	package_remove ttf-ubuntu-font-family
+#	aur_package_install "ttf-google-fonts-git"
+#	aur_package_install "ttf-ms-fonts"
 pause_function
 
 
