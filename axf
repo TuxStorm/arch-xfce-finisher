@@ -3964,7 +3964,7 @@ pause_function
 ## Display Manager
 	print_title "DISPLAY MANAGER - https://wiki.archlinux.org/index.php/Display_Manager"
 	print_info "A display manager, or login manager, is a graphical interface screen that is displayed at the end of the boot process in place of the default shell."
-#	package_install "lightdm lightdm-gtk3-greeter accountsservice"
+	package_install "lightdm lightdm-gtk3-greeter accountsservice"
 #	system_ctl enable lightdm
 pause_function
 
