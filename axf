@@ -3929,7 +3929,7 @@ language_selector
 configure_sudo
 select_user
 choose_aurhelper
-# reconfigure_system
+reconfigure_system
 # pause_function
 
 
@@ -3950,7 +3950,7 @@ pause_function
 #XFCE {{{
 	print_title "XFCE - https://wiki.archlinux.org/index.php/Xfce"
 	print_info "Xfce is a free software desktop environment for Unix and Unix-like platforms, such as Linux, Solaris, and BSD. It aims to be fast and lightweight, while still being visually appealing and easy to use."
-	package_install "xfce4 xfce4-goodies mupdf"
+	package_install "xfce4 xfce4-goodies"
 	package_install "gvfs"
 	package_install "xdg-user-dirs"
 	aur_package_install "gnome-defaults-list"
@@ -3969,8 +3969,8 @@ pause_function
 pause_function
 
 ## Icons
-#	aur_package_install "awoken-icons"
 	package_install "faenza-icon-theme faience-icon-theme"
+	aur_package_install "awoken-icons elementary-xfce-icons"
 #	aur_package_install "elementary-xfce-icons"
 #	aur_package_install "faenza-cupertino-icon-theme"
 #	aur_package_install "inx-icon-theme"
@@ -4002,7 +4002,7 @@ pause_function
 	package_install "hunspell-$LOCALE_HS"
 	package_install "aspell-$LOCALE_AS"
 	package_install "libreoffice-gnome"
-#	package_install "evince"
+	package_install "evince"
 
 ## Graphic Apps
 	package_install "gimp"
