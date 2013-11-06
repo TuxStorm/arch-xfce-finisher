@@ -3941,7 +3941,7 @@ install_basic_setup
 
 # install_ssh
 
-# install_xorg
+install_xorg
 
 # font_config
 
