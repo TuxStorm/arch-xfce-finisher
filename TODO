@@ -1,0 +1,4 @@
+
+- Make the BASH setup automatically pull from my github dotfiles repository.
+- Make PACAUR the deault AUR helper and install automatically
+
