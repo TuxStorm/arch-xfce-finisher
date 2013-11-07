@@ -3953,22 +3953,25 @@ pause_function
 	package_install "xfce4 xfce4-goodies"
 	package_install "gvfs"
 	package_install "xdg-user-dirs"
+	package_install "xscreensaver"
 	aur_package_install "gnome-defaults-list"
       # config xinitrc
 	config_xinitrc "startxfce4"
       #Abstraction for enumerating power devices, listening to device events and querying history and statistics
 	system_ctl enable upower
       #}}}
-pause_function
+	pause_function
 
 ## Display Manager
 	print_title "DISPLAY MANAGER - https://wiki.archlinux.org/index.php/Display_Manager"
 	print_info "A display manager, or login manager, is a graphical interface screen that is displayed at the end of the boot process in place of the default shell."
 	package_install "lightdm lightdm-gtk3-greeter accountsservice"
-#	system_ctl enable lightdm
-pause_function
+	system_ctl enable lightdm
+	pause_function
 
 ## Icons
+	print_title ""
+	print_info ""
 	package_install "faenza-icon-theme faience-icon-theme"
 	aur_package_install "awoken-icons elementary-xfce-icons"
 #	aur_package_install "elementary-xfce-icons"
@@ -3977,24 +3980,33 @@ pause_function
 #	aur_package_install "matrilineare-icon-theme"
 #	aur_package_install "moka-icon-theme-git"
 #	aur_package_install "nitrux-icon-theme"
-pause_function
+	pause_function
 
 ## Themes
-#	aur_package_install "xfce-theme-greybird-git"
+	print_title ""
+	print_info ""
+	aur_package_install "xfce-theme-greybird-git"
 	aur_package_install "gtk-theme-numix-git"
-#	aur_package_install "gtk-theme-orion-git"
-pause_function
+	aur_package_install "gtk-theme-orion-git"
+	pause_function
 
 ## Cursors
+	print_title ""
+	print_info ""
 	package_install "xcursor-vanilla-dmz"
-pause_function
+	pause_function
 
 ## Accessories
+	print_title ""
+	print_info ""
 	package_install "cairo-dock cairo-dock-plugins catfish gnome-calculator"
+	pause_function
 
 ## Development Apps
+	print_title ""
+	print_info ""
 	package_install "bluefish"
-pause_function
+	pause_function
 
 ## Office Apps
 	print_title "LIBREOFFICE - https://wiki.archlinux.org/index.php/LibreOffice"
@@ -4005,6 +4017,8 @@ pause_function
 	package_install "evince"
 
 ## Graphic Apps
+	print_title ""
+	print_info ""
 	package_install "gimp"
 	aur_package_install "gimphelp-scriptfu gimp-paint-studio gimpfx-foundry"
 	package_install "inkscape python2-numpy python-lxml"
@@ -4013,6 +4027,8 @@ pause_function
 	package_install "shotwell"
 
 ## Internet Apps
+	print_title ""
+	print_info ""
 	package_install "chromium flashplugin"
 	package_install "filezilla"
 #	aur_package_install "chromium-pepper-flash chromium-libpdf"
@@ -4029,6 +4045,8 @@ pause_function
 	package_install "irssi"
 
 ## Audio Apps
+	print_title "Audio Apps - https://wiki.archlinux.org/index.php/List_of_Applications/Multimedia"
+	print_info "Installation of audio CODECS and an audio player"
 	package_install "rhythmbox grilo grilo-plugins libgpod libdmapsharing gnome-python python-mako pywebkitgtk"
 	package_install "gst-plugins-base gst-plugins-base-libs gst-plugins-good \
                            gst-plugins-bad gst-plugins-ugly gst-libav"
@@ -4038,10 +4056,14 @@ pause_function
             # The resulting bitrate should be in the 170-210kbps range, according to music
             # complexity.
 pause_function
+	print_title "Set MP3 Defaults"
+	print_info ""
 	sudo -u ${USER_NAME} gconftool-2 --type string --set /system/gstreamer/0.10/audio/profiles/mp3/pipeline "audio/x-raw-int,rate=44100,channels=2 ! lame name=enc preset=1001 ! id3v2mux"
-pause_function
+	pause_function
 
 ## Video Apps
+	print_title ""
+	print_info ""
 	package_install "vlc"
 	package_install "libbluray libquicktime libdvdread libdvdnav libdvdcss cdrdao"
 	aur_package_install "libaacs"
@@ -4051,6 +4073,8 @@ pause_function
 pause_function
 
 ## Fonts
+	print_title ""
+	print_info ""
 	package_install "ttf-dejavu ttf-dejavu ttf-liberation"
 	aur_package_install "ttf-funfonts"
 	package_remove ttf-droid
