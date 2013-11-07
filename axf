@@ -461,6 +461,7 @@ install_basic_setup(){
   print_title "BASH TOOLS - https://wiki.archlinux.org/index.php/Bash"
   package_install "bc rsync mlocate bash-completion pkgstats wget"
   print_title "NTPd - https://wiki.archlinux.org/index.php/NTPd"
+	pause_function
   package_install "ntp"
   is_package_installed "ntp" && timedatectl set-ntp true
   pause_function
@@ -497,7 +498,7 @@ install_ssh(){
   print_title "SSH - https://wiki.archlinux.org/index.php/Ssh"
   print_info "Secure Shell (SSH) is a network protocol that allows data to be exchanged over a secure channel between two computers."
     package_install "openssh"
-    aur_package_install "rssh"
+#    aur_package_install "rssh"
     system_ctl enable sshd
     [[ ! -f /etc/ssh/sshd_config.aui ]] && cp -v /etc/ssh/sshd_config /etc/ssh/sshd_config.aui;
     #CONFIGURE SSHD_CONF #{{{
@@ -1573,18 +1574,7 @@ install_nm_wicd(){
   esac
 }
 #}}}
-#USB 3G MODEM {{{
-install_usb_modem(){
-  print_title "USB 3G MODEM - https://wiki.archlinux.org/index.php/USB_3G_Modem"
-  print_info "A number of mobile telephone networks around the world offer mobile internet connections over UMTS (or EDGE or GSM) using a portable USB modem device."
-  read_input_text "Install usb 3G modem support" $USBMODEM
-  if [[ $OPTION == y ]]; then
-    package_install "usbutils usb_modeswitch"
-    is_package_installed "networkmanager" && package_install "modemmanager" || package_install "wvdial"
-    pause_function
-  fi
-}
-#}}}
+
 #ACCESSORIES {{{
 install_accessories_apps(){
   while true
@@ -4005,6 +3995,11 @@ pause_function
 	package_install "xcursor-vanilla-dmz"
 	pause_function
 
+## System Tools
+	package_install "grsync"
+	package_install "htop"
+	pause_function
+
 ## Accessories
 	print_title ""
 	print_info ""
@@ -4094,6 +4089,8 @@ pause_function
 	aur_package_install "ttf-ms-fonts"
 pause_function
 
+sudo -u ${USER_NAME} gconftool-2 --type string --set /system/gstreamer/0.10/audio/profiles/mp3/pipeline "audio/x-raw-int,rate=44100,channels=2 ! lame name=enc preset=1001 ! id3v2mux"
+pause_function
 
 clean_orphan_packages
 
