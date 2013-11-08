@@ -307,7 +307,7 @@ configure_sudo(){
 
     #This config is especially helpful for those using terminal multiplexers like screen, tmux, or ratpoison, and those using sudo from scripts/cronjobs:
     echo "" >> /etc/sudoers
-    echo 'Defaults !requiretty, !tty_tickets, !umask' >> /etc/sudoers
+    echo '# Defaults !requiretty, !tty_tickets, !umask' >> /etc/sudoers
     echo 'Defaults visiblepw, path_info, insults, lecture=always' >> /etc/sudoers
     echo 'Defaults loglinelen=0, logfile =/var/log/sudo.log, log_year, log_host, syslog=auth' >> /etc/sudoers
     echo 'Defaults passwd_tries=3, passwd_timeout=1' >> /etc/sudoers
@@ -2787,70 +2787,6 @@ install_web_server(){
   esac
 }
 #}}}
-#FONTS {{{
-install_fonts(){
-  while true
-  do
-    print_title "FONTS - https://wiki.archlinux.org/index.php/Fonts"
-    echo " 1) $(menu_item "ttf-anka-coder") $AUR"
-    echo " 2) $(menu_item "ttf-dejavu")"
-    echo " 3) $(menu_item "ttf-exljbris") $AUR"
-    echo " 4) $(menu_item "ttf-funfonts") $AUR"
-    echo " 5) $(menu_item "ttf-google-fonts-git") $AUR"
-    echo " 6) $(menu_item "ttf-liberation")"
-    echo " 7) $(menu_item "ttf-ms-fonts") $AUR"
-    echo " 8) $(menu_item "ttf-vista-fonts") $AUR"
-    echo " 9) $(menu_item "wqy-microhei") (Chinese/Japanese/Korean Support)"
-    echo ""
-    echo " b) BACK"
-    echo ""
-    FONTS_OPTIONS+=" b"
-    read_input_options "$FONTS_OPTIONS"
-    for OPT in ${OPTIONS[@]}; do
-      case "$OPT" in
-        1)
-          aur_package_install "ttf-anka-coder"
-          ;;
-        2)
-          package_install "ttf-dejavu"
-          ;;
-        3)
-          aur_package_install "ttf-exljbris"
-          ;;
-        4)
-          aur_package_install "ttf-funfonts"
-          ;;
-        5)
-          package_remove ttf-droid
-          package_remove ttf-roboto
-          package_remove cantarell-fonts
-          package_remove ttf-ubuntu-font-family
-          aur_package_install "ttf-google-fonts-git"
-          ;;
-        6)
-          package_install "ttf-liberation"
-          ;;
-        7)
-          aur_package_install "ttf-ms-fonts"
-          ;;
-        8)
-          aur_package_install "ttf-vista-fonts"
-          ;;
-        9)
-          package_install "wqy-microhei"
-          ;;
-        "b")
-          break
-          ;;
-        *)
-          invalid_option
-          ;;
-      esac
-    done
-    elihw
-  done
-}
-#}}}
 #CLEAN ORPHAN PACKAGES {{{
 clean_orphan_packages(){
   print_title "CLEAN ORPHAN PACKAGES"
@@ -3085,6 +3021,11 @@ pause_function
             wget http://vlc-bluray.whoknowsmy.name/files/KEYDB.cfg
 pause_function
 
+## Games
+	print_title ""
+	print_info ""
+pause_function
+
 ## Fonts
 	print_title ""
 	print_info ""
@@ -3096,12 +3037,12 @@ pause_function
 	package_remove ttf-ubuntu-font-family
 #	aur_package_install "ttf-google-fonts-git"
 #	aur_package_install "ttf-ms-fonts"
-pause_function
+	pause_function
 
-sudo -u ${USER_NAME} gconftool-2 --type string --set /system/gstreamer/0.10/audio/profiles/mp3/pipeline "audio/x-raw-int,rate=44100,channels=2 ! lame name=enc preset=1001 ! id3v2mux"
-pause_function
+	sudo -u ${USER_NAME} gconftool-2 --type string --set /system/gstreamer/0.10/audio/profiles/mp3/pipeline "audio/x-raw-int,rate=44100,channels=2 ! lame name=enc preset=1001 ! id3v2mux"
+	pause_function
 
-clean_orphan_packages
+	clean_orphan_packages
 
 
 
