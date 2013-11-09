@@ -167,7 +167,7 @@ select_user(){
   #CREATE NEW USER {{{
   create_new_user(){
     read -p "Username: " USER_NAME
-    useradd -m -g users -G wheel -s /bin/bash ${USER_NAME}
+    useradd -m -g users -G video,audio,network,optical,storage,disk,wheel -s /bin/bash ${USER_NAME}
     chfn ${USER_NAME}
     passwd ${USER_NAME}
     pause_function
@@ -299,7 +299,7 @@ configure_sudo(){
 
     #This config is especially helpful for those using terminal multiplexers like screen, tmux, or ratpoison, and those using sudo from scripts/cronjobs:
     echo "" >> /etc/sudoers
-    echo '# Defaults !requiretty, !tty_tickets, !umask' >> /etc/sudoers
+    echo 'Defaults !requiretty, !tty_tickets, !umask' >> /etc/sudoers
     echo 'Defaults visiblepw, path_info, insults, lecture=always' >> /etc/sudoers
     echo 'Defaults loglinelen=0, logfile =/var/log/sudo.log, log_year, log_host, syslog=auth' >> /etc/sudoers
     echo 'Defaults passwd_tries=3, passwd_timeout=1' >> /etc/sudoers
