@@ -185,21 +185,13 @@ select_user(){
       case "$REPLY" in
         1)
           package_install "git"
-          git clone https://github.com/helmuthdu/dotfiles
+          git clone https://github.com/tuxstorm/dotfiles
           cp dotfiles/.bashrc dotfiles/.dircolors dotfiles/.dircolors_256 dotfiles/.nanorc ~/
           cp dotfiles/.bashrc dotfiles/.dircolors dotfiles/.dircolors_256 dotfiles/.nanorc /home/${USER_NAME}/
           rm -fr dotfiles
           ;;
         2)
           cp /etc/skel/.bashrc /home/${USER_NAME}
-          ;;
-        3)
-          package_install "git"
-          read -p "Enter your github username [ex: helmuthdu]: " GITHUB_USER
-          read -p "Enter your github repository [ex: aui]: " GITHUB_REPO
-          git clone https://github.com/$GITHUB_USER/$GITHUB_REPO
-          cp -R $GITHUB_REPO/.* /home/${USER_NAME}/
-          rm -fr $GITHUB_REPO
           ;;
         *)
           invalid_option
@@ -785,131 +777,7 @@ install_git_tor(){
 }
 #}}}
 
-#CONNMAN/NETWORKMANAGER/WICD {{{
-install_nm_wicd(){
-  print_title "NETWORK MANAGER"
-  echo " 1) Networkmanager"
-  echo " 2) Wicd"
-  echo " 3) ConnMan"
-  echo ""
-  echo " n) NONE"
-  echo ""
-  read_input $NETWORKMANAGER
-  case "$OPTION" in
-    1)
-      print_title "NETWORKMANAGER - https://wiki.archlinux.org/index.php/Networkmanager"
-      print_info "NetworkManager is a program for providing detection and configuration for systems to automatically connect to network. NetworkManager's functionality can be useful for both wireless and wired networks."
-      if [[ ${KDE} -eq 1 ]]; then
-        package_install "networkmanager dnsmasq kdeplasma-applets-plasma-nm"
-      else
-        package_install "networkmanager dnsmasq network-manager-applet"
-      fi
-      is_package_installed "ntp" && package_install "networkmanager-dispatcher-ntpd"
-      # Network Management daemon
-      system_ctl enable NetworkManager
-      pause_function
-      ;;
-    2)
-      print_title "WICD - https://wiki.archlinux.org/index.php/Wicd"
-      print_info "Wicd is a network connection manager that can manage wireless and wired interfaces, similar and an alternative to NetworkManager."
-      if [[ ${KDE} -eq 1 ]]; then
-        aur_package_install "wicd wicd-kde"
-      else
-        package_install "wicd wicd-gtk"
-      fi
-      # WICD daemon
-      system_ctl enable wicd
-      pause_function
-      ;;
-    3)
-      print_title "CONNMAN - https://wiki.archlinux.org/index.php/Connman"
-      print_info "ConnMan is an alternative to NetworkManager and Wicd and was created by Intel and the Moblin project for use with embedded devices."
-      package_install "connman "
-      # ConnMan daemon
-      system_ctl enable connman
-      pause_function
-      ;;
-  esac
-}
-#}}}
 
-#ACCESSORIES {{{
-install_accessories_apps(){
-  while true
-  do
-    print_title "ACCESSORIES APPS"
-    echo " 1) $(menu_item "cairo-dock")"
-    echo " 2) $(menu_item "catfish")"
-    echo " 3) $(menu_item "conky-lua") $AUR"
-    echo " 4) $(menu_item "docky") $AUR"
-    echo " 5) $(menu_item "galculator") $AUR"
-    echo " 6) $(menu_item "terra-bzr") $AUR"
-    echo " 7) $(menu_item "kupfer") $AUR"
-    echo " 8) $(menu_item "pyrenamer") $AUR"
-    echo " 9) $(menu_item "shutter") $AUR"
-    echo "10) $(menu_item "stormcloud") $AUR"
-    echo "11) $(menu_item "synapse")"
-    echo "12) $(menu_item "terminator")"
-    echo "13) $(menu_item "zim")"
-    echo ""
-    echo " b) BACK"
-    echo ""
-    ACCESSORIES_OPTIONS+=" b"
-    read_input_options "$ACCESSORIES_OPTIONS"
-    for OPT in ${OPTIONS[@]}; do
-      case "$OPT" in
-        1)
-          package_install "cairo-dock cairo-dock-plugins"
-          ;;
-        2)
-          package_install "catfish"
-          ;;
-        3)
-          aur_package_install "conky-lua"
-          ;;
-        4)
-          package_install "docky"
-          aur_package_install "dockmanager"
-          ;;
-        5)
-          package_install "galculator"
-          ;;
-        6)
-          aur_package_install "terra-bzr"
-          ;;
-        7)
-          aur_package_install "kupfer"
-          ;;
-        8)
-          aur_package_install "pyrenamer"
-          ;;
-        9)
-          aur_package_install "shutter"
-          ;;
-        10)
-          aur_package_install "stormcloud"
-          ;;
-        11)
-          package_install "synapse"
-          ;;
-        12)
-          package_install "terminator"
-          ;;
-        13)
-          package_install "zim"
-          ;;
-        "b")
-          break
-          ;;
-        *)
-          invalid_option
-          ;;
-      esac
-    done
-    elihw
-  done
-}
-#}}}
 #DEVELOPEMENT {{{
 install_development_apps(){
   while true
@@ -2846,7 +2714,7 @@ finish(){
   pause_function
   AUR_PKG_LIST="${AUI_DIR}/aur_pkg_list.log"
   pacman -Qm | awk '{print $1}' > $AUR_PKG_LIST
-  less $AUR_PKG_LIST
+  cat $AUR_PKG_LIST
   print_title "INSTALL COMPLETED"
   echo -e "Thanks for using the Archlinux Ultimate Install script by helmuthdu\n"
   #REBOOT
@@ -2882,6 +2750,8 @@ pause_function
 
 	install_video_cards
 
+	install_cups
+
 #XFCE {{{
 	print_title "XFCE - https://wiki.archlinux.org/index.php/Xfce"
 	print_info "Xfce is a free software desktop environment for Unix and Unix-like platforms, such as Linux, Solaris, and BSD. It aims to be fast and lightweight, while still being visually appealing and easy to use."
@@ -2902,6 +2772,18 @@ pause_function
 	print_info "A display manager, or login manager, is a graphical interface screen that is displayed at the end of the boot process in place of the default shell."
 	package_install "lightdm lightdm-gtk3-greeter accountsservice"
 	system_ctl enable lightdm
+
+	# Modifications to the greeter to make it look a little better.
+	echo "" >> /etc/lightdm/lightdm-gtk-greeter.conf
+#	echo '' >> /etc/lightdm/lightdm-gtk-greeter.conf
+#	echo '' >> /etc/lightdm/lightdm-gtk-greeter.conf
+#	echo '' >> /etc/lightdm/lightdm-gtk-greeter.conf
+#	echo '' >> /etc/lightdm/lightdm-gtk-greeter.conf
+#	echo '' >> /etc/lightdm/lightdm-gtk-greeter.conf
+#	echo '' >> /etc/lightdm/lightdm-gtk-greeter.conf
+#	echo '' >> /etc/lightdm/lightdm-gtk-greeter.conf
+#	echo '' >> /etc/lightdm/lightdm-gtk-greeter.conf
+
 	pause_function
 
 ## Network Manager
@@ -2917,6 +2799,7 @@ pause_function
 	print_title ""
 	print_info ""
 	package_install "faenza-icon-theme faience-icon-theme"
+	aur_package_install "gnome-colors-icon-theme"
 #	aur_package_install "awoken-icons elementary-xfce-icons"
 #	aur_package_install "elementary-xfce-icons"
 #	aur_package_install "faenza-cupertino-icon-theme"
@@ -2948,7 +2831,8 @@ pause_function
 ## Accessories
 	print_title ""
 	print_info ""
-	package_install "cairo-dock cairo-dock-plugins catfish gnome-calculator"
+	package_install "cairo-dock cairo-dock-plugins catfish gnome-calculator scrot"
+	aur-package_install "screenfetch"
 	pause_function
 
 ## Development Apps
@@ -3000,6 +2884,7 @@ pause_function
 	package_install "gst-plugins-base gst-plugins-base-libs gst-plugins-good \
                            gst-plugins-bad gst-plugins-ugly gst-libav"
 	package_install "gstreamer0.10 gstreamer0.10-plugins"
+	package_install "vorbis-tools"
 	    # Use the 'standard' preset by default. This preset should generally be
             # transparent to most people on most music and is already quite high in quality.
             # The resulting bitrate should be in the 170-210kbps range, according to music
