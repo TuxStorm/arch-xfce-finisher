@@ -319,38 +319,7 @@ choose_aurhelper(){
   aurhelper=("Yaourt" "Packer" "Pacaur")
   PS3="$prompt1"
   echo -e "Installing PACAUR as the default AUR Helper\n"
-  #select OPT in "${aurhelper[@]}"; do
-  #  case "$REPLY" in
-  #    1)
-  #      print_title "YAOURT - https://wiki.archlinux.org/index.php/Yaourt"
-  #      print_info "Yaourt (Yet AnOther User Repository Tool) is a community-contributed wrapper for pacman which adds seamless access to the AUR, allowing and automating package compilation and installation from your choice of the thousands of PKGBUILDs in the AUR, in addition to the many thousands of available Arch Linux binary packages."
-  #      if ! is_package_installed "yaourt" ; then
-  #        package_install "base-devel yajl namcap"
-  #        pacman -D --asdeps yajl namcap
-  #        aui_download_packages "package-query yaourt"
-  #        pacman -D --asdeps package-query
-  #        if ! is_package_installed "yaourt" ; then
-  #          echo "Yaourt not installed. EXIT now"
-  #          pause_function
-  #          exit 0
-  #        fi
-  #      fi
-  #      AUR_PKG_MANAGER="yaourt"
-  #      ;;
-  #    2)
-  #      if ! is_package_installed "packer" ; then
-  #        package_install "base-devel git jshon"
-  #        pacman -D --asdeps jshon
-  #        aui_download_packages "packer"
-  #        if ! is_package_installed "packer" ; then
-  #          echo "Packer not installed. EXIT now"
-  #          pause_function
-  #          exit 0
-  #        fi
-  #      fi
-  #      AUR_PKG_MANAGER="packer"
-  #      ;;
-  #    3)
+ 
         if ! is_package_installed "pacaur" ; then
           package_install "base-devel yajl expac"
           pacman -D --asdeps yajl expac
@@ -365,13 +334,7 @@ choose_aurhelper(){
           fi
         fi
         AUR_PKG_MANAGER="pacaur"
- #       ;;
- #     *)
- #       invalid_option
- #       ;;
- #   esac
- #   [[ -n $OPT ]] && break
- # done
+ 
   pause_function
 }
 #}}}
@@ -2779,9 +2742,9 @@ configure_sudo
 select_user
 choose_aurhelper
 reconfigure_system
-# pause_function
+#pause_function
 add_custom_repositories
-pause_function
+#pause_function
 
 	install_basic_setup
 
@@ -2808,7 +2771,7 @@ pause_function
       #Abstraction for enumerating power devices, listening to device events and querying history and statistics
 	system_ctl enable upower
       #}}}
-	pause_function
+#pause_function
 
 ## Display Manager
 	print_title "DISPLAY MANAGER - https://wiki.archlinux.org/index.php/Display_Manager"
@@ -2817,7 +2780,7 @@ pause_function
 	system_ctl enable lightdm
 
 	# Modifications to the greeter to make it look a little better.
-	echo "" >> /etc/lightdm/lightdm-gtk-greeter.conf
+	echo '# Lines below added from the Arch XFCE Finisher script' >> /etc/lightdm/lightdm-gtk-greeter.conf
 #	echo '' >> /etc/lightdm/lightdm-gtk-greeter.conf
 #	echo '' >> /etc/lightdm/lightdm-gtk-greeter.conf
 #	echo '' >> /etc/lightdm/lightdm-gtk-greeter.conf
@@ -2827,7 +2790,7 @@ pause_function
 #	echo '' >> /etc/lightdm/lightdm-gtk-greeter.conf
 #	echo '' >> /etc/lightdm/lightdm-gtk-greeter.conf
 
-	pause_function
+#pause_function
 
 ## Network Manager
 	print_title "NETWORKMANAGER - https://wiki.archlinux.org/index.php/Networkmanager"
@@ -2836,13 +2799,13 @@ pause_function
 	is_package_installed "ntp" && package_install "networkmanager-dispatcher-ntpd"
 	# Network Management daemon
 	system_ctl enable NetworkManager
-	pause_function
+#pause_function
 
 ## Icons
 	print_title ""
 	print_info ""
 	package_install "faenza-icon-theme faience-icon-theme"
-	aur_package_install "gnome-colors-icon-theme"
+#	aur_package_install "gnome-colors-icon-theme"
 #	aur_package_install "awoken-icons elementary-xfce-icons"
 #	aur_package_install "elementary-xfce-icons"
 #	aur_package_install "faenza-cupertino-icon-theme"
@@ -2850,39 +2813,39 @@ pause_function
 #	aur_package_install "matrilineare-icon-theme"
 #	aur_package_install "moka-icon-theme-git"
 #	aur_package_install "nitrux-icon-theme"
-	pause_function
+#pause_function
 
 ## Themes
 	print_title ""
 	print_info ""
-	aur_package_install "xfce-theme-greybird-git"
+#	aur_package_install "xfce-theme-greybird-git"
 #	aur_package_install "gtk-theme-numix-git"
 #	aur_package_install "gtk-theme-orion-git"
-	pause_function
+#pause_function
 
 ## Cursors
 	print_title ""
 	print_info ""
 	package_install "xcursor-vanilla-dmz"
-	pause_function
+#pause_function
 
 ## System Tools
 	package_install "grsync"
 	package_install "htop"
-	pause_function
+#pause_function
 
 ## Accessories
 	print_title ""
 	print_info ""
 	package_install "cairo-dock cairo-dock-plugins catfish gnome-calculator scrot"
-	aur-package_install "screenfetch"
-	pause_function
+#	aur-package_install "screenfetch"
+#pause_function
 
 ## Development Apps
 	print_title ""
 	print_info ""
 	package_install "bluefish"
-	pause_function
+#pause_function
 
 ## Office Apps
 	print_title "LIBREOFFICE - https://wiki.archlinux.org/index.php/LibreOffice"
@@ -2936,7 +2899,7 @@ pause_function
 	print_title "Set MP3 Defaults"
 	print_info ""
 #	sudo -u ${USER_NAME} gconftool-2 --type string --set /system/gstreamer/0.10/audio/profiles/mp3/pipeline "audio/x-raw-int,rate=44100,channels=2 ! lame name=enc preset=1001 ! id3v2mux"
-	pause_function
+#pause_function
 
 ## Video Apps
 	print_title ""
@@ -2947,12 +2910,12 @@ pause_function
          sudo -u ${USER_NAME} mkdir -p /home/${USER_NAME}/.config/aacs/ &&
             cd /home/${USER_NAME}/.config/aacs/ &&
             wget http://vlc-bluray.whoknowsmy.name/files/KEYDB.cfg
-pause_function
+#pause_function
 
 ## Games
 	print_title ""
 	print_info ""
-pause_function
+#pause_function
 
 ## Fonts
 	print_title ""
@@ -2965,10 +2928,13 @@ pause_function
 	package_remove ttf-ubuntu-font-family
 #	aur_package_install "ttf-google-fonts-git"
 #	aur_package_install "ttf-ms-fonts"
-	pause_function
+#pause_function
 
 	sudo -u ${USER_NAME} gconftool-2 --type string --set /system/gstreamer/0.10/audio/profiles/mp3/pipeline "audio/x-raw-int,rate=44100,channels=2 ! lame name=enc preset=1001 ! id3v2mux"
-	pause_function
+#pause_function
+
+
+	install_git_tor
 
 	clean_orphan_packages
 
