@@ -318,7 +318,7 @@ choose_aurhelper(){
   print_warning "\tNone of these tools are officially supported by Arch devs."
   aurhelper=("Yaourt" "Packer" "Pacaur")
   PS3="$prompt1"
-  echo -e "Installing PACAUR as the AUR Helper\n"
+  echo -e "Installing PACAUR as the default AUR Helper\n"
   #select OPT in "${aurhelper[@]}"; do
   #  case "$REPLY" in
   #    1)
@@ -453,7 +453,6 @@ install_basic_setup(){
   print_title "BASH TOOLS - https://wiki.archlinux.org/index.php/Bash"
   package_install "bc rsync mlocate bash-completion pkgstats wget"
   print_title "NTPd - https://wiki.archlinux.org/index.php/NTPd"
-	pause_function
   package_install "ntp"
   is_package_installed "ntp" && timedatectl set-ntp true
   pause_function
@@ -625,24 +624,68 @@ pause_function
 pause_function
 }
 #}}}
+## #FONT CONFIGURATION {{{
+## font_config(){
+##    print_title "FONTS CONFIGURATION - https://wiki.archlinux.org/index.php/Font_Configuration"
+##   print_info "Fontconfig is a library designed to provide a list of available fonts to applications, and also for configuration for how fonts get rendered."
+##   
+##       is_package_installed "freetype2-infinality" && pacman -Rdds freetype2-infinality fontconfig-infinality
+##        is_package_installed "freetype2-ubuntu" && pacman -Rdds freetype2-ubuntu fontconfig-ubuntu cairo-ubuntu
+##       pacman -S --asdeps --needed cairo fontconfig freetype2 libxft
+##        #enable global fonts configs
+##        cd /etc/fonts/conf.d
+##        [[ ! -f /etc/fonts/conf.d/10-sub-pixel-rgb.conf ]] && ln -sv ../conf.avail/10-sub-pixel-rgb.conf
+##        [[ ! -f /etc/fonts/conf.d/10-autohint.conf ]] && ln -sv ../conf.avail/10-autohint.conf
+##        [[ ! -f /etc/fonts/conf.d/11-lcdfilter-default.conf ]] && ln -sv ../conf.avail/11-lcdfilter-default.conf
+##        [[ ! -f /etc/fonts/conf.d/70-no-bitmaps.conf ]] && ln -s ../conf.avail/70-no-bitmaps.conf
+##        cd $AUI_DIR
+## pause_function
+##}
+###}}}
+
+
+
 #FONT CONFIGURATION {{{
 font_config(){
+  while true
+  do
     print_title "FONTS CONFIGURATION - https://wiki.archlinux.org/index.php/Font_Configuration"
     print_info "Fontconfig is a library designed to provide a list of available fonts to applications, and also for configuration for how fonts get rendered."
-   
-        is_package_installed "freetype2-infinality" && pacman -Rdds freetype2-infinality fontconfig-infinality
+    echo " 1) Default"
+    echo " 2) Ubuntu"
+    echo ""
+    read_input $FONTCONFIG
+    case "$OPTION" in
+      1)
         is_package_installed "freetype2-ubuntu" && pacman -Rdds freetype2-ubuntu fontconfig-ubuntu cairo-ubuntu
         pacman -S --asdeps --needed cairo fontconfig freetype2 libxft
-        #enable global fonts configs
-        cd /etc/fonts/conf.d
-        [[ ! -f /etc/fonts/conf.d/10-sub-pixel-rgb.conf ]] && ln -sv ../conf.avail/10-sub-pixel-rgb.conf
-        [[ ! -f /etc/fonts/conf.d/10-autohint.conf ]] && ln -sv ../conf.avail/10-autohint.conf
-        [[ ! -f /etc/fonts/conf.d/11-lcdfilter-default.conf ]] && ln -sv ../conf.avail/11-lcdfilter-default.conf
-        [[ ! -f /etc/fonts/conf.d/70-no-bitmaps.conf ]] && ln -s ../conf.avail/70-no-bitmaps.conf
-        cd $AUI_DIR
+        break
+        ;;
+      2)
+        is_package_installed "freetype2" && pacman -Rdds --noconfirm freetype2 fontconfig cairo libxft
+        aur_package_install "fontconfig-ubuntu cairo-ubuntu"
+        break
+        ;;
+      *)
+        invalid_option
+        ;;
+    esac
+  done
   pause_function
 }
 #}}}
+
+
+
+
+
+
+
+
+
+
+
+
 #VIDEO CARDS {{{
 install_video_cards(){
   package_install "dmidecode"
