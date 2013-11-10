@@ -335,7 +335,7 @@ choose_aurhelper(){
         fi
         AUR_PKG_MANAGER="pacaur"
  
-  pause_function
+#  pause_function
 }
 #}}}
 #POWERPILL {{{
@@ -580,10 +580,9 @@ install_xorg(){
   package_install "xf86-input-synaptics xf86-input-mouse xf86-input-keyboard"
   package_install "mesa"
   package_install "gamin"
-pause_function
   KEYMAP=$(localectl status | grep Keymap | awk '{print $3}')
   localectl set-keymap ${KEYMAP}
-pause_function
+#pause_function
 }
 #}}}
 ## #FONT CONFIGURATION {{{
