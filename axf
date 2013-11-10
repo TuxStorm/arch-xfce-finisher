@@ -1327,8 +1327,7 @@ add_custom_repositories
 	# Modifications to the greeter to make it look a little better.
 	echo '' >> /etc/lightdm/lightdm-gtk-greeter.conf
 	echo '# Lines below added from the Arch XFCE Finisher script' >> /etc/lightdm/lightdm-gtk-greeter.conf
-#	echo '[greeter]' >> /etc/lightdm/lightdm-gtk-greeter.conf
-	echo 'background=/usr/share/backgrounds/xfce/black-background-3211.jpg' >> /etc/lightdm/lightdm-gtk-greeter.conf
+	echo 'background=/usr/share/backgrounds/lightdm/black-background-3211.jpg' >> /etc/lightdm/lightdm-gtk-greeter.conf
 	echo 'theme-name=Greybird' >> /etc/lightdm/lightdm-gtk-greeter.conf
 	echo 'icon-theme-name=gnome-wise' >> /etc/lightdm/lightdm-gtk-greeter.conf
 	echo 'font-name=Droid Sans 10' >> /etc/lightdm/lightdm-gtk-greeter.conf
