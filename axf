@@ -1491,6 +1491,9 @@ add_custom_repositories
 
 	clean_orphan_packages
 
+##Copy wallpapers to backgrounds directory
+	cp ./images/* /usr/sahre/backgrounds/xfce/
+
 	finish
 
 #while true
