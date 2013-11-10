@@ -1473,7 +1473,7 @@ add_custom_repositories
 ## Fonts
 	print_title ""
 	print_info ""
-	package_install "ttf-dejavu ttf-dejavu ttf-liberation"
+	package_install "ttf-dejavu ttf-dejavu ttf-liberation ttf-droid"
 #	aur_package_install "ttf-funfonts"
 #	package_remove ttf-droid
 #	package_remove ttf-roboto
@@ -1494,8 +1494,9 @@ add_custom_repositories
 ##Copy wallpapers to backgrounds directory
 
 pause_function
-	cp ./images/* /usr/share/backgrounds/xfce/
+	cp ~/axf/images/* /usr/share/backgrounds/xfce/
 pause_function
+
 	finish
 
 #while true
