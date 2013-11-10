@@ -1491,10 +1491,11 @@ add_custom_repositories
 
 	clean_orphan_packages
 
-##Copy wallpapers to backgrounds directory
+##Prepare the default backgrounds
 
 pause_function
-	cp ~/axf/images/* /usr/share/backgrounds/xfce/
+	cp -R ~/axf/images/* /usr/share/backgrounds/
+	
 pause_function
 
 	finish
