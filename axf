@@ -46,6 +46,7 @@ welcome(){
   [[ ! -f /etc/pacman.conf.aui ]] && cp -v /etc/pacman.conf /etc/pacman.conf.aui || echo "/etc/pacman.conf.aui";
   [[ -f /etc/ssh/sshd_config.aui ]] && echo "/etc/ssh/sshd_conf.aui";
   [[ -f /etc/sudoers.aui ]] && echo "/etc/sudoers.aui";
+  [[ -f /etc/lightdm/lightdm-gtk-greeter.conf ]] && echo "/etc/lightdm/lightdm-gtk-greeter.conf.aui";
   pause_function
   echo ""
 }
@@ -886,6 +887,9 @@ add_custom_repositories
 	package_install "lightdm lightdm-gtk3-greeter accountsservice"
 	system_ctl enable lightdm
 
+if [[ ! -f  /etc/lightdm/lightdm-gtk-greeter.conf.aui ]]; then
+    cp -v /etc/lightdm/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf.aui
+
 	# Modifications to the greeter to make it look a little better.
 	echo '' >> /etc/lightdm/lightdm-gtk-greeter.conf
 	echo '# Lines below added from the Arch XFCE Finisher script' >> /etc/lightdm/lightdm-gtk-greeter.conf
@@ -902,8 +906,9 @@ add_custom_repositories
 	echo 'show-clock=true' >> /etc/lightdm/lightdm-gtk-greeter.conf
 	echo 'clock-format=%a, %h %e %l:%M:%S%p' >> /etc/lightdm/lightdm-gtk-greeter.conf
 	echo 'keyboard=onboard' >> /etc/lightdm/lightdm-gtk-greeter.conf
+fi
 
-#pause_function
+pause_function
 
 ## Network Manager
 	print_title "NETWORKMANAGER - https://wiki.archlinux.org/index.php/Networkmanager"
@@ -1005,7 +1010,7 @@ add_custom_repositories
 	package_install "gstreamer0.10 gstreamer0.10-plugins"
 	package_install "vorbis-tools asunder"
 	touch /home/$USER_NAME/.asunder
-echo 'buttmunch' >> /home/${USER_NAME}/.asunder
+echo '/dev/cdrom' >> /home/${USER_NAME}/.asunder
 echo "/home/${USER_NAME}/Music" >> /home/${USER_NAME}/.asunder
 echo '0' >> /home/${USER_NAME}/.asunder
 echo '1' >> /home/${USER_NAME}/.asunder
