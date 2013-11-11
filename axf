@@ -1005,8 +1005,8 @@ add_custom_repositories
 	package_install "gstreamer0.10 gstreamer0.10-plugins"
 	package_install "vorbis-tools asunder"
 	touch /home/$USER_NAME/.asunder
-echo '/dev/cdrom' >> /home/${USER_NAME}/.asunder
-echo '/home/${USER_NAME}/Music' >> /home/${USER_NAME}/.asunder
+echo 'buttmunch' >> /home/${USER_NAME}/.asunder
+echo "/home/${USER_NAME}/Music" >> /home/${USER_NAME}/.asunder
 echo '0' >> /home/${USER_NAME}/.asunder
 echo '1' >> /home/${USER_NAME}/.asunder
 echo '%N - %T' >> /home/${USER_NAME}/.asunder
