@@ -46,7 +46,7 @@ welcome(){
   [[ ! -f /etc/pacman.conf.aui ]] && cp -v /etc/pacman.conf /etc/pacman.conf.aui || echo "/etc/pacman.conf.aui";
   [[ -f /etc/ssh/sshd_config.aui ]] && echo "/etc/ssh/sshd_conf.aui";
   [[ -f /etc/sudoers.aui ]] && echo "/etc/sudoers.aui";
-  [[ -f /etc/lightdm/lightdm-gtk-greeter.conf ]] && echo "/etc/lightdm/lightdm-gtk-greeter.conf.aui";
+  [[ -f /etc/lightdm/lightdm-gtk-greeter.conf.aui ]] && echo "/etc/lightdm/lightdm-gtk-greeter.conf.aui";
   pause_function
   echo ""
 }
