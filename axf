@@ -175,18 +175,7 @@ select_user(){
     configure_user_account
   }
   #}}}
-  #CONFIGURE USER ACCOUNT {{{
-  configure_user_account(){
-    #BASHRC {{{
-    print_title "BASHRC - https://wiki.archlinux.org/index.php/Bashrc"
-    bashrc_list=("Default" "Vanilla" "Get from github");
-    PS3="$prompt1"
-          package_install "git"
-          git clone https://github.com/tuxstorm/dotfiles
-          cp dotfiles/.bashrc dotfiles/.dircolors dotfiles/.dircolors_256 dotfiles/.nanorc ~/
-          cp dotfiles/.bashrc dotfiles/.dircolors dotfiles/.dircolors_256 dotfiles/.nanorc /home/${USER_NAME}/
-          #rm -fr dotfiles
-    #}}}
+  
   print_title "SELECT/CREATE USER ACCOUNT - https://wiki.archlinux.org/index.php/Users_and_Groups"
   users_list=(`cat /etc/passwd | grep "/home" | cut -d: -f1`);
   PS3="$prompt1"
