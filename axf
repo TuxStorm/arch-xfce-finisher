@@ -191,6 +191,7 @@ select_user(){
           git clone https://github.com/tuxstorm/dotfiles
           cp dotfiles/.bashrc dotfiles/.dircolors dotfiles/.dircolors_256 dotfiles/.nanorc ~/
           cp dotfiles/.bashrc dotfiles/.dircolors dotfiles/.dircolors_256 dotfiles/.nanorc /home/${USER_NAME}/
+          cp dotfiles/.bashrc dotfiles/.dircolors dotfiles/.dircolors_256 dotfiles/.nanorc /etc/skel/
           #rm -fr dotfiles
     #}}}
   }
@@ -820,7 +821,14 @@ add_custom_repositories
       #Abstraction for enumerating power devices, listening to device events and querying history and statistics
 	system_ctl enable upower
       #}}}
-#pause_function
+pause_function
+  print_title "Applying custom XFCE config"
+  print_info ""
+# cp dotfiles/.bashrc dotfiles/.dircolors dotfiles/.dircolors_256 dotfiles/.nanorc ~/
+# cp dotfiles/.bashrc dotfiles/.dircolors dotfiles/.dircolors_256 dotfiles/.nanorc /home/${USER_NAME}/
+# cp dotfiles/.bashrc dotfiles/.dircolors dotfiles/.dircolors_256 dotfiles/.nanorc /etc/skel/
+pause_function
+
 
 ## Display Manager
 	print_title "DISPLAY MANAGER - https://wiki.archlinux.org/index.php/Display_Manager"
