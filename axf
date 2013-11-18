@@ -792,21 +792,13 @@ configure_sudo
 select_user
 choose_aurhelper
 reconfigure_system
-#pause_function
 add_custom_repositories
-#pause_function
-
-	install_basic_setup
-
-	install_ssh
-
-	install_xorg
-
-	font_config
-
-	install_video_cards
-
-	install_cups
+install_basic_setup
+install_ssh
+install_xorg
+font_config
+install_video_cards
+install_cups
 
 #XFCE {{{
 	print_title "XFCE - https://wiki.archlinux.org/index.php/Xfce"
