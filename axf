@@ -824,9 +824,9 @@ add_custom_repositories
 pause_function
   print_title "Applying custom XFCE config"
   print_info ""
-  cp -R dotfiles/.config/* ~/
-  cp -R dotfiles/.config/* /home/${USER_NAME}/
-  cp -R dotfiles/.config/* /etc/skel/
+  cp -R dotfiles/.config ~/
+  cp -R dotfiles/.config /home/${USER_NAME}/
+  cp -R dotfiles/.config /etc/skel/
 pause_function
 
 
