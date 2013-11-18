@@ -1041,7 +1041,7 @@ echo '9' >> /home/${USER_NAME}/.asunder
 
 pause_function
 	cp -R ~/axf/images/* /usr/share/backgrounds/
-	
+	mv ~/axf/images/archlinux-wm-xfce-green.svg /usr/share/pixmaps/xfdesktop/
 pause_function
 
   rm -fr dotfiles
