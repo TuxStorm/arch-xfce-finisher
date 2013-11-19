@@ -48,11 +48,11 @@
   #}}}
   # EDITOR {{{
     AUTOMATIC_MODE=0
-    if [[ -f /usr/bin/vim ]]; then
-      EDITOR="vim"
-    elif [[ -z $EDITOR ]]; then
+   # if [[ -f /usr/bin/vim ]]; then
+   #   EDITOR="vim"
+   # elif [[ -z $EDITOR ]]; then
       EDITOR="nano"
-    fi
+   # fi
   #}}}
   # DESKTOP ENVIRONMENT
   CINNAMON=0
@@ -419,7 +419,7 @@
           su - ${USER_NAME} -c "${AUR_PKG_MANAGER} --noconfirm -S ${PKG}" >>"$LOG" 2>&1 &
           pid=$!;progress $pid
         else
-          su - ${USER_NAME} -c "${AUR_PKG_MANAGER} -S ${PKG}"
+          su - ${USER_NAME} -c "${AUR_PKG_MANAGER} -S --noconfirm --noedit ${PKG}"
         fi
       else
         if [[ $VERBOSE_MODE -eq 0 ]]; then

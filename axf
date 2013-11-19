@@ -892,12 +892,14 @@ pause_function
 ## System Tools
 	package_install "grsync"
 	package_install "htop"
+  package_install "whois"
 #pause_function
 
 ## Accessories
 	print_title ""
 	print_info ""
-	package_install "cairo-dock cairo-dock-plugins catfish gnome-calculator scrot"
+#	package_install "cairo-dock cairo-dock-plugins"
+  package_install "catfish gnome-calculator scrot"
 #	aur-package_install "screenfetch"
 #pause_function
 
@@ -928,7 +930,8 @@ pause_function
 ## Internet Apps
 	print_title ""
 	print_info ""
-	package_install "chromium flashplugin"
+	package_install "chromium"
+# package_install "flashplugin"
 	package_install "filezilla"
 #	aur_package_install "chromium-pepper-flash chromium-libpdf"
 #	aur_package_install "btsync"
@@ -1044,7 +1047,7 @@ pause_function
 	mv ~/axf/images/archlinux-wm-xfce-green.svg /usr/share/pixmaps/xfdesktop/
 pause_function
 
-  rm -fr dotfiles
+  rm -fr ~/axf
 
 pause_function
 
