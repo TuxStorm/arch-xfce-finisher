@@ -893,6 +893,7 @@ pause_function
 	package_install "grsync"
 	package_install "htop"
   package_install "whois"
+  package_install "gnome-nettool"
 #pause_function
 
 ## Accessories
