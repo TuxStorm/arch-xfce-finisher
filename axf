@@ -912,7 +912,7 @@ pause_function
 
 ## Office Apps
 	print_title "LIBREOFFICE - https://wiki.archlinux.org/index.php/LibreOffice"
-	package_install "libreoffice-$LOCALE_LO libreoffice-common libreoffice-base libreoffice-calc libreoffice-draw libreoffice-impress libreoffice-math libreoffice-writer"
+	package_install "libreoffice-fresh"
 	package_install "hunspell-$LOCALE_HS"
 	package_install "aspell-$LOCALE_AS"
 	package_install "libreoffice-gnome"
@@ -931,7 +931,7 @@ pause_function
 ## Internet Apps
 	print_title ""
 	print_info ""
-	package_install "chromium"
+	package_install "firefox"
   package_install "flashplugin"
 	package_install "filezilla"
 #	aur_package_install "chromium-pepper-flash chromium-libpdf"
