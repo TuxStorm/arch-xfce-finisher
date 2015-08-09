@@ -825,7 +825,7 @@ pause_function
 ## Display Manager
 	print_title "DISPLAY MANAGER - https://wiki.archlinux.org/index.php/Display_Manager"
 	print_info "A display manager, or login manager, is a graphical interface screen that is displayed at the end of the boot process in place of the default shell."
-	package_install "lightdm lightdm-gtk3-greeter accountsservice"
+	package_install "lightdm lightdm-gtk-greeter accountsservice"
 	system_ctl enable lightdm
 
 if [[ ! -f  /etc/lightdm/lightdm-gtk-greeter.conf.aui ]]; then
@@ -915,14 +915,14 @@ pause_function
 	package_install "libreoffice-fresh"
 	package_install "hunspell-$LOCALE_HS"
 	package_install "aspell-$LOCALE_AS"
-	package_install "libreoffice-gnome"
+#	package_install "libreoffice-gnome"
 	package_install "evince"
 
 ## Graphic Apps
 	print_title ""
 	print_info ""
-	package_install "gimp"
-	aur_package_install "gimphelp-scriptfu gimp-paint-studio gimpfx-foundry"
+#	package_install "gimp"
+#	aur_package_install "gimphelp-scriptfu gimp-paint-studio gimpfx-foundry"
 	package_install "inkscape python2-numpy python-lxml"
 	aur_package_install "sozi"
 	package_install "scribus"
@@ -932,7 +932,7 @@ pause_function
 	print_title ""
 	print_info ""
 	package_install "firefox"
-  package_install "flashplugin"
+	package_install "flashplugin"
 	package_install "filezilla"
 #	aur_package_install "chromium-pepper-flash chromium-libpdf"
 	aur_package_install "btsync"
@@ -1017,7 +1017,7 @@ echo '9' >> /home/${USER_NAME}/.asunder
 ## Games
 	print_title ""
 	print_info ""
-	package_install "frozen-bubble supertuxkart"
+#	package_install "frozen-bubble supertuxkart"
 #pause_function
 
 ## Fonts
