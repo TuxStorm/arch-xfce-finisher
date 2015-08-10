@@ -803,7 +803,7 @@ install_cups
 #XFCE {{{
 	print_title "XFCE - https://wiki.archlinux.org/index.php/Xfce"
 	print_info "Xfce is a free software desktop environment for Unix and Unix-like platforms, such as Linux, Solaris, and BSD. It aims to be fast and lightweight, while still being visually appealing and easy to use."
-	package_install "xfce4 xfce4-goodies"
+	package_install "xfce4 xfce4-goodies xfce4-settings"
 	package_install "gvfs"
 	package_install "xdg-user-dirs"
 	package_install "xscreensaver"
