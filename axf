@@ -1006,7 +1006,7 @@ echo '9' >> /home/${USER_NAME}/.asunder
 ## Games
 	print_title ""
 	print_info ""
-#	package_install "frozen-bubble supertuxkart"
+	package_install "frozen-bubble gnome-sudoku"
 #pause_function
 
 ## Fonts
@@ -1014,10 +1014,10 @@ echo '9' >> /home/${USER_NAME}/.asunder
 	print_info ""
 	package_install "ttf-dejavu ttf-liberation"
 #	aur_package_install "ttf-funfonts"
-	package_remove ttf-droid
-	package_remove ttf-roboto
-	package_remove cantarell-fonts
-	package_remove ttf-ubuntu-font-family
+#	package_remove ttf-droid
+#	package_remove ttf-roboto
+#	package_remove cantarell-fonts
+#	package_remove ttf-ubuntu-font-family
 	aur_package_install "ttf-google-fonts-git"
 	aur_package_install "ttf-ms-fonts"
 #pause_function
