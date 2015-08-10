@@ -863,7 +863,7 @@ pause_function
 ## Icons
 	print_title ""
 	print_info ""
-	package_install "faenza-icon-theme faience-icon-theme"
+#	package_install "faenza-icon-theme faience-icon-theme"
 	aur_package_install "gnome-colors-icon-theme"
 #	aur_package_install "awoken-icons elementary-xfce-icons"
 #	aur_package_install "elementary-xfce-icons"
@@ -877,7 +877,7 @@ pause_function
 ## Themes
 	print_title ""
 	print_info ""
-	aur_package_install "gtk-theme-numix-green"
+#	aur_package_install "gtk-theme-numix-green"
 	aur_package_install "xfce-theme-greybird-git"
 #	aur_package_install "gtk-theme-numix-git"
 #	aur_package_install "gtk-theme-orion-git"
@@ -1024,7 +1024,7 @@ echo '9' >> /home/${USER_NAME}/.asunder
 	print_title ""
 	print_info ""
 	package_install "ttf-dejavu ttf-liberation"
-	aur_package_install "ttf-funfonts"
+#	aur_package_install "ttf-funfonts"
 	package_remove ttf-droid
 	package_remove ttf-roboto
 	package_remove cantarell-fonts
