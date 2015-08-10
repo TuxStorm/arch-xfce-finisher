@@ -863,24 +863,13 @@ pause_function
 ## Icons
 	print_title ""
 	print_info ""
-#	package_install "faenza-icon-theme faience-icon-theme"
 	aur_package_install "gnome-colors-icon-theme"
-#	aur_package_install "awoken-icons elementary-xfce-icons"
-#	aur_package_install "elementary-xfce-icons"
-#	aur_package_install "faenza-cupertino-icon-theme"
-#	aur_package_install "inx-icon-theme"
-#	aur_package_install "matrilineare-icon-theme"
-#	aur_package_install "moka-icon-theme-git"
-#	aur_package_install "nitrux-icon-theme"
 #pause_function
 
 ## Themes
 	print_title ""
 	print_info ""
-#	aur_package_install "gtk-theme-numix-green"
 	aur_package_install "xfce-theme-greybird-git"
-#	aur_package_install "gtk-theme-numix-git"
-#	aur_package_install "gtk-theme-orion-git"
 #pause_function
 
 ## Cursors
@@ -925,7 +914,7 @@ pause_function
 #	aur_package_install "gimphelp-scriptfu gimp-paint-studio gimpfx-foundry"
 	package_install "inkscape python2-numpy python-lxml"
 	aur_package_install "sozi"
-	package_install "scribus"
+#	package_install "scribus"
 	package_install "shotwell"
 
 ## Internet Apps
