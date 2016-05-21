@@ -920,11 +920,11 @@ pause_function
 ## Internet Apps
 	print_title ""
 	print_info ""
-	package_install "chromium"
+	package_install "firefox"
 	#package_install "flashplugin"
 	package_install "filezilla"
 #	aur_package_install "chromium-pepper-flash chromium-libpdf"
-	aur_package_install "btsync"
+#	aur_package_install "btsync"
 	aur_package_install "dropbox thunar-dropbox"
 	package_install "transmission-gtk"
 	if [[ -f /home/${USER_NAME}/.config/transmission/settings.json ]]; then
